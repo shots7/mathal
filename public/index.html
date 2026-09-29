@@ -396,11 +396,20 @@ function setRole(r){role.value=r;paths.forEach(function(p){p.setAttribute('aria-
 paths.forEach(function(p){p.addEventListener('click',function(){setRole(p.dataset.role)})});
 document.querySelectorAll('a[data-role]').forEach(function(a){a.addEventListener('click',function(){setRole(a.dataset.role)})});
 role.addEventListener('change',function(){setRole(role.value)});
+var KEY="aa065c74-04a8-4511-ad32-ec84f3af7940";
 document.getElementById('form').addEventListener('submit',function(e){
-e.preventDefault();var f=e.target,d=new FormData(f);
+e.preventDefault();var f=e.target,d=new FormData(f),ok=document.getElementById('ok'),btn=f.querySelector('button[type=submit]');
+if(d.get('botcheck'))return;
+if(KEY.indexOf('YOUR_')===0){
 var body='Name: '+d.get('name')+'\nCompany / Creator: '+d.get('company')+'\nEmail: '+d.get('email')+'\nI am a: '+d.get('role')+'\n\n'+d.get('message');
 location.href='mailto:info@mathal-media.com?subject='+encodeURIComponent('Partnership enquiry – '+d.get('role'))+'&body='+encodeURIComponent(body);
-document.getElementById('ok').style.display='block'});
+ok.textContent='Your email draft is ready to send.';ok.style.display='block';return}
+btn.disabled=true;btn.textContent='Sending…';ok.style.display='none';
+fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:KEY,subject:'Partnership enquiry – '+d.get('role'),from_name:'Mathal Media Website',name:d.get('name'),company:d.get('company'),email:d.get('email'),role:d.get('role'),message:d.get('message')})})
+.then(function(r){return r.json()}).then(function(j){if(!j.success)throw 0;f.reset();setRole('Brand');ok.style.color='';ok.textContent="Thank you — your message has been sent. We'll be in touch shortly.";ok.style.display='block'})
+.catch(function(){ok.style.color='#b3261e';ok.textContent='Something went wrong. Please email us directly at info@mathal-media.com.';ok.style.display='block'})
+.then(function(){btn.disabled=false;btn.textContent='Start a Conversation'});
+});
 var els=document.querySelectorAll('.rv'),cs=document.querySelectorAll('[data-count]');
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!('IntersectionObserver' in window)||reduce){els.forEach(function(x){x.classList.add('in')});return}
@@ -415,3 +424,4 @@ cs.forEach(function(x){co.observe(x)});
 </script>
 </body>
 </html>
+ 
