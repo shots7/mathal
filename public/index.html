@@ -387,7 +387,7 @@ role.addEventListener('change',function(){setRole(role.value)});
 document.getElementById('form').addEventListener('submit',function(e){
 e.preventDefault();var f=e.target,d=new FormData(f);
 var body='Name: '+d.get('name')+'\nCompany / Creator: '+d.get('company')+'\nEmail: '+d.get('email')+'\nI am a: '+d.get('role')+'\n\n'+d.get('message');
-location.href='mailto:hello@mathalmedia.com?subject='+encodeURIComponent('Partnership enquiry – '+d.get('role'))+'&body='+encodeURIComponent(body);
+location.href='mailto:info@mathal-media.com?subject='+encodeURIComponent('Partnership enquiry – '+d.get('role'))+'&body='+encodeURIComponent(body);
 document.getElementById('ok').style.display='block'});
 var els=document.querySelectorAll('.rv'),cs=document.querySelectorAll('[data-count]');
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
