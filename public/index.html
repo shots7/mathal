@@ -468,170 +468,109 @@ footer .copy{padding-top:14px}
   footer .top{align-items:flex-start}
 }
 
-/* ===== v14: mobile stats viewport fix ===== */
-@media(max-width:960px){
-  .hero .stats{width:100%;max-width:100%;overflow:hidden}
-  .hero .stats .wrap{
-    width:100%;
-    max-width:100%;
-    margin:0 auto;
-    padding-left:20px;
-    padding-right:20px;
-    display:grid;
-    grid-template-columns:minmax(0,1fr);
-  }
-  .hero .stat,.hero .stat:first-child{
-    width:100%;
-    min-width:0;
-    display:block;
-    padding:16px 0;
-    margin:0;
-    border-left:0;
-    border-top:1px solid var(--line);
-  }
-  .hero .stat:first-child{border-top:0}
-  .hero .num{
-    max-width:100%;
-    font-size:28px;
-    line-height:1.08;
-    white-space:normal;
-    overflow-wrap:anywhere;
-  }
-  .hero .stat p{
-    max-width:100%;
-    margin:7px 0 0;
-    line-height:1.45;
-  }
-}
 
-
-/* ===== v15: robust mobile stats visibility fix ===== */
-@media(max-width:960px){
-  .hero .stats{
-    display:block!important;
-    position:relative!important;
-    left:auto!important;
-    right:auto!important;
-    width:100%!important;
-    max-width:none!important;
-    overflow:visible!important;
-    opacity:1!important;
-    visibility:visible!important;
-    background:#fff!important;
-    -webkit-backdrop-filter:none!important;
-    backdrop-filter:none!important;
-  }
-  .hero .stats .wrap{
-    display:grid!important;
-    grid-template-columns:1fr!important;
-    width:100%!important;
-    max-width:100%!important;
-    margin:0!important;
-    padding:0 20px!important;
-    position:relative!important;
-    left:auto!important;
-    right:auto!important;
-    transform:none!important;
-    opacity:1!important;
-    visibility:visible!important;
-  }
-  .hero .stats .stat,
-  .hero .stats .stat:first-child{
-    display:block!important;
-    position:relative!important;
-    width:100%!important;
-    min-width:0!important;
-    height:auto!important;
-    padding:18px 0!important;
-    margin:0!important;
-    transform:none!important;
-    opacity:1!important;
-    visibility:visible!important;
-    border-left:0!important;
-    border-top:1px solid var(--line)!important;
-  }
-  .hero .stats .stat:first-child{border-top:0!important}
-  .hero .stats .num{
-    display:block!important;
-    position:static!important;
-    width:auto!important;
-    max-width:100%!important;
-    margin:0!important;
-    padding:0!important;
-    transform:none!important;
-    opacity:1!important;
-    visibility:visible!important;
-    color:var(--forest)!important;
-    -webkit-text-fill-color:var(--forest)!important;
-    font-size:30px!important;
-    line-height:1.08!important;
-    white-space:normal!important;
-    overflow:visible!important;
-    overflow-wrap:normal!important;
-  }
-  .hero .stats .stat p{
-    display:block!important;
-    position:static!important;
-    width:auto!important;
-    max-width:100%!important;
-    margin:8px 0 0!important;
-    padding:0!important;
-    transform:none!important;
-    opacity:1!important;
-    visibility:visible!important;
-    color:var(--muted)!important;
-    -webkit-text-fill-color:var(--muted)!important;
-    font-size:14px!important;
-    line-height:1.45!important;
-  }
-  .hero .stats .num::after{
-    display:block!important;
-    width:36px!important;
-    margin-top:10px!important;
-  }
-}
-
-/* ===== v5: single static stats bar ===== */
-.statbar{
-  width:100%;
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+/* ===== final correction: stable stats strip + tighter final viewport ===== */
+/* Keep the original hero geometry. Only change the stats presentation. */
+.hero .stats{
   background:var(--forest);
   color:#F7F8F4;
   border-block:1px solid rgba(255,255,255,.08);
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
 }
-.statbar-item{
+.hero .stats .wrap{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  width:100%;
+}
+.hero .stat,
+.hero .stat:first-child{
   min-width:0;
-  padding:22px clamp(14px,2.4vw,32px);
-  text-align:center;
+  padding:17px 24px;
+  border-top:0;
+  border-left:1px solid rgba(255,255,255,.16);
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  gap:6px;
-}
-.statbar-item + .statbar-item{border-left:1px solid rgba(255,255,255,.16)}
-.statbar-item strong{
-  display:block;
+  align-items:flex-start;
+  gap:3px;
   color:#F7F8F4;
-  font-size:clamp(20px,2.8vw,34px);
-  font-weight:800;
+}
+.hero .stat:first-child{border-left:0;padding-left:0}
+.hero .num{
+  color:#F7F8F4;
+  font-size:clamp(22px,2.5vw,36px);
   line-height:1.05;
-  letter-spacing:-.03em;
   white-space:normal;
 }
-.statbar-item span{
-  display:block;
+.hero .stat p{
+  margin:0;
   color:rgba(247,248,244,.68);
-  font-size:clamp(10px,1vw,13px);
-  font-weight:600;
-  line-height:1.25;
-  max-width:22ch;
+  font-size:12px;
+  line-height:1.3;
 }
-@media(max-width:560px){
-  .statbar-item{padding:13px 6px;gap:4px}
-  .statbar-item strong{font-size:clamp(14px,4.4vw,19px);line-height:1.05}
-  .statbar-item span{font-size:clamp(8px,2.3vw,10px);line-height:1.18;max-width:14ch}
+.hero .stats .num::after{display:none!important}
+
+/* Mobile: same one-bar / three-column structure, just tighter. */
+@media(max-width:960px){
+  .hero .stats .wrap{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    padding:0 12px;
+  }
+  .hero .stat,
+  .hero .stat:first-child{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    gap:4px!important;
+    padding:12px 7px!important;
+    border-top:0!important;
+    border-left:1px solid rgba(255,255,255,.16)!important;
+    opacity:1!important;
+    visibility:visible!important;
+    transform:none!important;
+  }
+  .hero .stat:first-child{border-left:0!important}
+  .hero .num{
+    display:block!important;
+    color:#F7F8F4!important;
+    font-size:clamp(14px,4.2vw,19px)!important;
+    line-height:1.05!important;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  .hero .stat p{
+    display:block!important;
+    color:rgba(247,248,244,.68)!important;
+    font-size:clamp(8px,2.2vw,10px)!important;
+    line-height:1.2!important;
+    max-width:15ch;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+}
+
+/* Make Contact + footer fit in the final desktop viewport. */
+@media(min-width:961px){
+  .contact{
+    min-height:calc(100svh - 158px)!important;
+    padding:48px 0 30px!important;
+  }
+  .contact .wrap{gap:48px}
+  .contact .paths{margin:20px 0 16px}
+  .contact form{padding:26px;gap:14px}
+  .contact form .row{gap:14px}
+  .contact textarea{min-height:92px}
+  .contact .lead{margin-top:18px!important}
+  footer{padding:20px 0 14px}
+  footer .top{padding-bottom:14px;gap:20px}
+  footer nav{gap:18px}
+  footer .copy{padding-top:10px}
 }
 </style>
 </head>
@@ -660,19 +599,15 @@ footer .copy{padding-top:14px}
 </div>
 </div>
 <div class="herobot">
-<div class="statbar" aria-label="Key figures">
-  <div class="statbar-item">
-    <strong>8M+</strong>
-    <span>Combined Followers &amp; Subscribers</span>
-  </div>
-  <div class="statbar-item">
-    <strong>640M+</strong>
-    <span>Combined YouTube Views</span>
-  </div>
-  <div class="statbar-item">
-    <strong>Less Headaches</strong>
-    <span>Creator Coordination, Simplified</span>
-  </div>
+<div class="stats" aria-label="Key figures">
+<div class="wrap">
+<div class="stat"><div class="num">8M+</div><p>Combined Followers &amp; Subscribers</p></div>
+<div class="stat"><div class="num">640M+</div><p>Combined YouTube Views</p></div>
+<div class="stat">
+  <div class="num">Less Headaches</div>
+  <p>Creator Coordination, Simplified</p>
+</div>
+</div>
 </div>
 <div class="marq" aria-hidden="true"><div class="mt"><span>Creator Partnerships</span><i></i><span class="o">Brand Collaborations</span><i></i><span>Talent Representation</span><i></i><span class="o">Campaign Strategy</span><i></i><span>Partnership Management</span><i></i><span class="o">Campaign Execution</span><i></i><span>Creator Partnerships</span><i></i><span class="o">Brand Collaborations</span><i></i><span>Talent Representation</span><i></i><span class="o">Campaign Strategy</span><i></i><span>Partnership Management</span><i></i><span class="o">Campaign Execution</span><i></i></div></div>
 </div>
