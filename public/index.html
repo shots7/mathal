@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mathal Media | Creator Partnerships & Influencer Marketing</title>
 <meta name="description" content="Mathal Media connects brands with established creators through strategic, audience-aligned partnerships across YouTube and social media.">
-<meta name="theme-color" content="#123D2D">
+<meta name="theme-color" content="#0c110e">
 <meta property="og:title" content="Mathal Media | Creator Partnerships & Influencer Marketing">
 <meta property="og:description" content="Strategic, audience-aligned partnerships between brands and established creators.">
 <meta property="og:type" content="website">
@@ -108,7 +108,7 @@ h2.sp.in .w>span{transform:none}
 .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:36px 32px;position:relative;transition:transform .3s,box-shadow .3s,border-color .3s}
 .card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(35,139,91,.11),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
 .card::after{content:"";position:absolute;left:32px;top:0;width:36px;height:2px;background:var(--emerald);transition:width .35s}
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(18,61,45,.35);border-color:rgba(35,139,91,.4)}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(127,208,168,.5);border-color:rgba(35,139,91,.4)}
 .card:hover::before{opacity:1}
 .card:hover::after{width:72px}
 .card svg{width:26px;height:26px;stroke:var(--emerald);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:26px}
@@ -292,6 +292,49 @@ html{scroll-behavior:auto}
 .label::before{transform:none}
 #ld{display:none}
 }
+/* ===== dark theme ===== */
+:root{--paper:#0c110e;--ink:#F2F5F0;--muted:#9fada4;--line:rgba(247,248,244,.12)}
+body{background:var(--paper);color:var(--ink)}
+h1,h2,h3{color:#F7F8F4}
+.label{color:#7fd0a8}
+.hero{background:radial-gradient(900px 520px at 85% 15%,rgba(35,139,91,.22),transparent 60%),radial-gradient(700px 480px at 78% 85%,rgba(35,139,91,.13),transparent 62%),linear-gradient(180deg,#1c241f 0%,#0c110e 62%)}
+.hero::after{opacity:.1}
+.btn{background:#F7F8F4;border-color:#F7F8F4;color:#0c110e}
+.btn:hover{background:var(--emerald);border-color:var(--emerald);color:#fff}
+.btn.ghost{background:transparent;color:#F7F8F4;border-color:rgba(247,248,244,.4)}
+.btn.ghost:hover{background:#F7F8F4;border-color:#F7F8F4;color:#0c110e}
+.btn.light{background:#F7F8F4;color:#123D2D}
+.menu .btn{color:#0c110e}
+.menu .btn:hover{color:#fff}
+header.scrolled{background:rgba(12,17,14,.78);box-shadow:0 1px 0 var(--line)}
+.brand{color:#F7F8F4}
+.menu a:not(.btn):hover,.menu a.active:not(.btn){color:#fff}
+.burger span,.burger span::before{background:#F7F8F4}
+.burger span::before{box-shadow:0 14px 0 #F7F8F4}
+.stats{background:rgba(255,255,255,.04)}
+.num{color:#F7F8F4}
+.card{background:#111a15}
+.card:hover{box-shadow:0 18px 40px -22px rgba(0,0,0,.7)}
+.brands{background:linear-gradient(180deg,#15231c,#0e1813)}
+.point{border-color:rgba(247,248,244,.14)}
+.point:last-child{border-bottom-color:rgba(247,248,244,.14)}
+.point p{color:rgba(247,248,244,.64)}
+.white{background:#0f1612}
+.step{border-top-color:rgba(247,248,244,.35)}
+.step b{color:rgba(247,248,244,.06)}
+.network{background:linear-gradient(180deg,#15231c,#0c110e)}
+.tag{color:#F7F8F4}
+.serious{background:radial-gradient(720px 460px at 86% 52%,rgba(35,139,91,.16),transparent 70%),linear-gradient(180deg,#27302b 0%,#151b17 48%,#0b100d 100%)}
+form{background:#111a15;box-shadow:0 30px 60px -30px rgba(0,0,0,.7);border:1px solid var(--line)}
+label{color:#F7F8F4}
+input,select,textarea{border-color:rgba(247,248,244,.18)}
+select option{background:#111a15;color:#fff}
+form .btn{background:var(--emerald);border-color:var(--emerald);color:#fff}
+form .btn:hover{background:#2aa56c;border-color:#2aa56c}
+.ok{color:#7fd0a8}
+footer{background:#070a08}
+.menu{box-shadow:0 20px 30px -20px rgba(0,0,0,.6)}
+@media(max-width:960px){.menu{background:#0c110e}}
 </style>
 </head>
 <body id="top">
@@ -629,9 +672,9 @@ if(hero){
     g.clearRect(0,0,W,H);
     for(var i=0;i<N;i++){var a=P[i];
       if(!RM){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;var dx=M.x-a.x,dy=M.y-a.y;if(Math.hypot(dx,dy)<180){a.x+=dx*.006;a.y+=dy*.006}}
-      g.fillStyle='rgba(18,61,45,.35)';g.beginPath();g.arc(a.x,a.y,1.7,0,6.283);g.fill();
-      for(var j=i+1;j<N;j++){var l=Math.hypot(a.x-P[j].x,a.y-P[j].y);if(l<140)line2(a,P[j],'18,61,45',.17*(1-l/140))}
-      var m=Math.hypot(M.x-a.x,M.y-a.y);if(m<170)line2(a,M,'35,139,91',.55*(1-m/170));
+      g.fillStyle='rgba(127,208,168,.5)';g.beginPath();g.arc(a.x,a.y,1.7,0,6.283);g.fill();
+      for(var j=i+1;j<N;j++){var l=Math.hypot(a.x-P[j].x,a.y-P[j].y);if(l<140)line2(a,P[j],'127,208,168',.17*(1-l/140))}
+      var m=Math.hypot(M.x-a.x,M.y-a.y);if(m<170)line2(a,M,'80,190,135',.55*(1-m/170));
     }
   }
   if(IO)new IntersectionObserver(function(e){run=e[0].isIntersecting}).observe(hero);
